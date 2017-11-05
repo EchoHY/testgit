@@ -1,5 +1,2 @@
-<<<<<<< HEAD
 cxzsad
-=======
-cxzsad
->>>>>>> upstream/master
+
