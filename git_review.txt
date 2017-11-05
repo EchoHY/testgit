@@ -28,3 +28,32 @@ Part_Cancel the working area
 Part_Delete the file
 	rm [filename]
 	git commit -m "ensure to delete th file"
+
+
+先查看远程状态 git remote -v
+添加远程地址:git remote set-url origin github@
+添加团队远程地址:git remote add upstream github@
+获取最新的团队版本 git fetch upstream
+千万不要使用git pull
+
+
+将远程分支和本地分支合并 git merge upstream/
+如果出现合并冲突 则 git status 查看冲突的文件和问题
+删除/修改/手动合并 删掉<<<< === >>>
+再提交 (git add/commit)
+将当前分支更改为本地分支 git checkout 
+检查个人仓库地址 git remote -v
+提交修改后的文件git push
+在Github上申请合并 pull request
+
+
+
+如何使用VIM
+
+在新界面按"i",进入编辑模式,开始修改
+修改完成后按ESC,然后输入:wq保存并退出
+
+如何使用高效merge软件
+输入 git config --edit --global进入编辑页面
+添加 [merge] tool= "diffmerge"
+[mertool "diffmerge"]  path=软件安装地址 其中\改成/
