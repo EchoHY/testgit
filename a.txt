@@ -1,6 +1,10 @@
-111111
-The First thing we need to do is that Group members talk about study and Git Community.
-The Second thing is that takes half an hour to complete a word about teaches us
-to use git locally and remotely.
-The Last thing  is thar takes one and half an hour to work ont our website with the detail that add the invitation system and add the multi-workers system.
-That's all.   2017/11/5 
+
+balbabal
+
+balbabal
+2333
+2
+3
+master
+master2
+

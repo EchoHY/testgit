@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-
-=======
 cxzsad
 add a line
->>>>>>> upstream/master
