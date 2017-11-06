@@ -1,11 +1,11 @@
 Part__Git branch
 	git checkout -b dev    			  //create dev branch and switch to it(dev) 
 	git branch dev	   			  //create dev branch but remain in the current branch
-	git checkout  dev        			  //switch to branch dev
+	git checkout  dev        		  //switch to branch dev
 	git branch 	   			  //look all the branches in th local
-	git branch -d bug	    			  //delete the branch bug 
+	git branch -d bug	    		  //delete the branch bug 
 	git merge origin/dev 			  // merge origin/dev to the current branch
- 	git branch -track  [branch]  [remote branch] 	  //new a branch and new a relationship between th branch and a [remote-branch]
+ 	git branch -track  [branch]  [remote branch]    //new a branch and new a relationship between th branch and a [remote-branch]
 	git branch -set-upstream [branch][remote-branch]//new a relationship between the local [branch] and the [remote-branch]
 	
 Part_Vi basic command 
@@ -15,18 +15,18 @@ Part_Vi basic command
 	:wq					//Under the form of  command, you can save you file and exit 
 	:q!					//Under the form of command, you don't need to save the file and exit forcely
 Part_Log
-	git log 					// look the history	of every commit
-	git log -pretty=oneline			//look the history   one commit per line
+	git log 				// look the history of every commit
+	git log -pretty=oneline			//look the history  one commit per line
  	
 Part_Back to historial commit
-	git reset --hard HEAD^
-	git reset --hard HEAD~[times]
-	git reflog 	
-	git reset --hard [Commit Version Number]
-Part_Cancel the working area
-	git checkout -- [filename]
+	git reset --hard HEAD^			//commit back to the lastest version
+	git reset --hard HEAD~[times]		//commit back to the timesest version
+	git reflog 				//checkout the commit version number
+	git reset --hard [Commit Version Number]//resume the commit of ...
+Part_Cancel the working area		
+	git checkout -- [filename]		//cancel the change after add but not commit
 Part_Delete the file
-	rm [filename]
+	rm [filename]				//delete the file
 	git commit -m "ensure to delete th file"
 
 ----------------------------------------------------------------------------------------------------------------------------------------
