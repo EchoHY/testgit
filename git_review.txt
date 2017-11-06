@@ -1,12 +1,12 @@
 Part__Git branch
-	git checkout 篓Cb dev    			  //create dev branch and switch to it(dev) 
-	git branch dev	   			  //create dev branch 拢卢but remain in the current branch
+	git checkout -b dev    			  //create dev branch and switch to it(dev) 
+	git branch dev	   			  //create dev branch but remain in the current branch
 	git checkout  dev        			  //switch to branch dev
 	git branch 	   			  //look all the branches in th local
-	git branch 篓Cd bug	    			  //delete the branch bug 
+	git branch -d bug	    			  //delete the branch bug 
 	git merge origin/dev 			  // merge origin/dev to the current branch
- 	git branch 篓Ctrack  [branch]  [remote branch] 	  //new a branch拢卢and new a relationship between th branch and a [remote-branch]
-	git branch 篓Cset-upstream [branch][remote-branch]//new a relationship between the local [branch] and the [remote-branch]
+ 	git branch -track  [branch]  [remote branch] 	  //new a branch and new a relationship between th branch and a [remote-branch]
+	git branch -set-upstream [branch][remote-branch]//new a relationship between the local [branch] and the [remote-branch]
 	
 Part_Vi basic command 
 	vi filename				//such as vi a.txt
