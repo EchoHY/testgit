@@ -100,12 +100,12 @@ from echo工作室 冯子扬
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-先查看远程状态 git remote -v
-添加远程地址:git remote set-url origin github@
-添加团队远程地址:git remote add upstream github@
-获取最新的团队版本 git fetch upstream
+先查看远程状态		git remote -v
+添加远程地址		 git remote add origin github@
+添加团队远程地址       git remote add upstream github@
+开始同步 		  git fetch upstream
+执行		    git merge upstream/dev   将源分支(upstream/dev)合并到当前分支
 千万不要使用git pull
-
 
 将远程分支和本地分支合并 git merge upstream/
 如果出现合并冲突 则 git status 查看冲突的文件和问题
