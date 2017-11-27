@@ -117,13 +117,96 @@ from echo工作室 冯子扬
 在Github上申请合并 pull request
 
 
-
-如何使用VIM
-
-在新界面按"i",进入编辑模式,开始修改
-修改完成后按ESC,然后输入:wq保存并退出
-
 如何使用高效merge软件
 输入 git config --edit --global进入编辑页面
 添加 [merge] tool= "diffmerge"
 [mertool "diffmerge"]  path=软件安装地址 其中\改成/
+
+------------------------------github团队开发快速教程-----------------------------------------------------------------------------------
+0.前期准备
+1.创建开发分支
+2.Fork项目到个人的仓库
+3.Clone项目到本地
+4.和团队项目保持同步
+5.push修改到自己的项目上
+6.请求合并到团队项目上
+7.团队项目负责人审核及同意合并请求
+其中0，1，7是由团队项目负责人来完成的。 
+开发人员只要从 2 开始就行了
+
+
+零.前期准备 
+建仓库 部署项目 
+1.创建一个组织：Create an organization
+2.在组织下创建一个team，然后邀请你的团队成员
+3.新建一个repository
+4.用SSH Keys 队友需要在自己电脑里生成一个ssh key
+把id_rsa.pub 拷给owner ,让owner新建一个ssh key保持你的公钥
+队友自己不要做，这步后，队友就可以把自己的代码push到团队的repository中
+把队友直接push的权限关掉，即设置成Read。
+
+一.创建开发分支
+master分支一般用来发布稳定版本，dev分支(开发分支)用来发布开发版本
+
+Create branch:dev
+
+二.Fork项目到个人的仓库
+查找团队项目 
+Fork
+yy/program
+	forked from xx/program
+
+三.Clone项目到本地
+
+SSH 或者 HTTPS
+git clone git@xxx/yy.git
+git branch -a 查看远程分支
+git checkout -b dev origin/dev
+git branch
+ls dir
+
+
+//团队成员分别负责不同任务，但相互之间需要使用，更新对方的文件,如何快捷保持文件同步。
+四.如何和团队项目保持同步
+首先查看有没有设置upstream ， 使用 git remote -v
+命令来查看
+git remote -v
+origin git@......<fetch>
+origin git@......<push>
+git remote add upstream git@github.com:fzu2015/CourseManagement.git
+git remote -v
+origin git@......<fetch>
+origin git@......<push>
+upstream git@.....<fetch>
+upstream git@.....<push>
+
+
+开始同步 git fetch upstream 
+
+
+执行 git merge upstream/dev  
+将源分支(upstream/dev)合并到当前分支(dev)
+
+五.push修改到自己的项目上
+解决冲突
+git push 将本地修改同步到自己的GitHub仓库上
+注意：在当前所在分支使用push，会push到与这个分支相关联的远程仓库分支。
+这里dev分支与origin/dev关联，因此push到Github上的dev分支
+
+六.请求合并到团队项目上
+登陆自己的Github账号 进入Fork的仓库 点击Pull request
+base fork 项目名 base dev  |  head fork 项目名 compare dev
+检查修改
+
+
+七.团队项目负责人审核及同意合并请求
+进入GitHub的团队项目仓库中
+Pull requests 一列
+审核需注意
+1.清楚是合并到哪个分支 xx wants to merge 3 commits into yy:dev from schaper:dev
+2.点击Files changed 查看该Pull request 的修改
+如果关闭该Pull request tell your teammate
+
+Merge pull request
+
+
