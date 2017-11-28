@@ -1,0 +1,129 @@
+Part__Git branch
+	git checkout -b dev    			  //create dev branch and switch to it(dev) 
+	git branch dev	   			  //create dev branch but remain in the current branch
+	git checkout  dev        		  //switch to branch dev
+	git branch 	   			  //look all the branches in th local
+	git branch -d bug	    		  //delete the branch bug 
+	git merge origin/dev 			  // merge origin/dev to the current branch
+ 	git branch -track  [branch]  [remote branch]    //new a branch and new a relationship between th branch and a [remote-branch]
+	git branch -set-upstream [branch][remote-branch]//new a relationship between the local [branch] and the [remote-branch]
+	
+Part_Vi basic command 
+	vi filename				//such as vi a.txt
+	i					//Input ,you can write words in the file
+	ESC					//switch between the form of written and the form of  command
+	:wq					//Under the form of  command, you can save you file and exit 
+	:q!					//Under the form of command, you don't need to save the file and exit forcely
+Part_Log
+	git log 				// look the history of every commit
+	git log -pretty=oneline			//look the history  one commit per line
+ 	
+Part_Back to historial commit
+	git reset --hard HEAD^			//commit back to the lastest version
+	git reset --hard HEAD~[times]		//commit back to the timesest version
+	git reflog 				//checkout the commit version number
+	git reset --hard [Commit Version Number]//resume the commit of ...
+Part_Cancel the working area		
+	git checkout -- [filename]		//cancel the change after add but not commit
+Part_Delete the file
+	rm [filename]				//delete the file
+	git commit -m "ensure to delete th file"
+
+----------------------------------------------------------------------------------------------------------------------------------------
+git 基本操作note
+from echo工作室 冯子扬
+
+0.了解git
+	1)Q：git是什么？
+	  A：Git是目前世界上最先进的分布式版本控制系统。
+
+	2)Q：git的工作原理和流程
+	  A：以git从本地端push到远程端为例，一个新改动需要经过的过程是： Workspace：工作区  add————> Index / Stage：暂存区 commit————> Repository：本地仓库 push————> Remote：远程仓库
+
+
+1.本地仓库建立
+	1)git init (初始化出来一个.git本地仓库，这时候用git命令就能管理该仓库了)
+	  PS：开发者的电脑记得改成文件不隐藏，这样才能看到.git的文件夹，文件夹内的文件不要随意改动
+	  	 （git init不是必需操作，如果先本地传远程，git init会用到；但如果是GitHub上的项目，Down下来修改后
+	  	   提交，需要的是后面的git clone操作）
+
+	2)配置config用户名和邮箱
+	 （这是用来绑定本地git和远程github的操作）
+	  $ git config --global user.name "yourname" (例：fuujiro 不要忘记名字左右的双引号！) //绑定用户名
+	  $ git config --global user.email yourMailAddress(例：fuujiro1997@gmail.com) //绑定用户邮箱
+
+2.新改动提交到远程操作
+   一.先有远程再从本地提交改动
+      1）选好／创建一个文件夹，用来放置clone的项目
+      
+      2）git clone 项目地址 （例：git clone https://github.com/fuujiro/testgit.git）
+      	 —————从github上克隆一个项目到本地
+      
+      3）找到本地仓库地址，拉取你需要的改动到文件夹里
+      
+      4）git status 
+      	 查看本地仓库状态
+      
+      5）按照第4步提示：
+         如果有新文件，会提示“git add XXX file”；
+         输入：git add 文件名 （有多个文件时，一并提交，使用git add .）
+         PS：这一步成功的话，我们就已经从Workspace到暂存区了
+
+      6）可再次使用git status 查看状态（这是个非常棒的命令，如果你忘记下一步该做什么，你尽可使用git status来提示你进行）
+      
+      7）按照新文件提交的例子，这里status正常会显示“reset XXXfile”，但千万不要照做哦！因为这是git友善地提示
+      你有改动，需不需要驳回这次改动！而我们的目的是提交改动，所以应该输入：git commit -m “注释”
+      	Ps：这一步成功的话，我们就已经从暂存区到达本地仓库了
+
+      8）最后输入：git push
+        这一步会提示你改动了啥，改动了多少行。
+      	这一步成功的话，我们就已经可以在github上面查看到新的改动了。
+
+  	  PS：恭喜你，你就完成了第一次的提交！
+
+  	  Review：让我们复习一下，最好精简一下不是嘛？
+  	  		1.git clone //克隆一个仓库
+  	  		2.git add  //添加新改动到暂存区
+  	  		3.git commit -m "" //提交新改动到本地仓库
+  	  		4.git push // 提交整个本地仓库到GitHub上，替代原仓库
+  	  		5.还有一个经常使用的git status来查看状态，帮助你进行提交
+
+  	二.先有本地仓库，上传到远程GitHub
+  	  1）ssh-keygen ：得到ssh-key在本地的地址（例：/Users/fuujiro/.ssh/id_rsa），前往该地址打开id_rsa文件，将所有复制下来。在GitHub里的个人settings里的SSH and GPG key中添加复制的信息。
+
+      2）在GitHub上新建一个空仓库，把该仓库地址clone下来
+
+  	  3）git remote add origin 远程空仓库地址 （链接远程仓库和本地仓库）
+
+  	  4）git push -u origin master (将本地master分支上传到GitHub上，默认是master分支)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+先查看远程状态 git remote -v
+添加远程地址:git remote set-url origin github@
+添加团队远程地址:git remote add upstream github@
+获取最新的团队版本 git fetch upstream
+千万不要使用git pull
+
+
+将远程分支和本地分支合并 git merge upstream/
+如果出现合并冲突 则 git status 查看冲突的文件和问题
+删除/修改/手动合并 删掉<<<< === >>>
+再提交 (git add/commit)
+将当前分支更改为本地分支 git checkout 
+检查个人仓库地址 git remote -v
+提交修改后的文件git push
+在Github上申请合并 pull request
+
+
+
+如何使用VIM
+
+在新界面按"i",进入编辑模式,开始修改
+修改完成后按ESC,然后输入:wq保存并退出
+
+如何使用高效merge软件
+输入 git config --edit --global进入编辑页面
+添加 [merge] tool= "diffmerge"
+[mertool "diffmerge"]  path=软件安装地址 其中\改成/
